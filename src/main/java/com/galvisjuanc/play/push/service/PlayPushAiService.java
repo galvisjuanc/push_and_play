@@ -1,0 +1,14 @@
+package com.galvisjuanc.play.push.service;
+
+import dev.langchain4j.service.UserMessage;
+import dev.langchain4j.service.spring.AiService;
+
+@AiService
+public interface PlayPushAiService {
+
+    @UserMessage("""
+            Genera un saludo de bienvenida a la plataforma de Gestión de Peliculas PlayPush.
+            Usa menos de 120 caracteres.
+            """)
+    String generateGreeting();
+}
