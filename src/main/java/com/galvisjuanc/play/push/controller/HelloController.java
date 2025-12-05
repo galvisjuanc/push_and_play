@@ -1,13 +1,20 @@
 package com.galvisjuanc.play.push.controller;
 
+import com.galvisjuanc.play.push.service.PlayPushAiService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
 
+    private final PlayPushAiService playPushAiService;
+
+    public HelloController(PlayPushAiService playPushAiService) {
+        this.playPushAiService = playPushAiService;
+    }
+
     @GetMapping("/")
     public String hello() {
-        return "Hello World";
+        return this.playPushAiService.generateGreeting();
     }
 }
