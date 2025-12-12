@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+    private final String platform;
     private final PlayPushAiService playPushAiService;
 
-    public HelloController(PlayPushAiService playPushAiService) {
+    public HelloController(String platform, PlayPushAiService playPushAiService) {
+        this.platform = platform;
         this.playPushAiService = playPushAiService;
     }
 
