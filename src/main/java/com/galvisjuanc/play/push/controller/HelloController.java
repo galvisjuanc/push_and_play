@@ -1,6 +1,6 @@
 package com.galvisjuanc.play.push.controller;
 
-import com.galvisjuanc.play.push.service.PlayPushAiService;
+import com.galvisjuanc.play.push.domain.service.PlayPushAiService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

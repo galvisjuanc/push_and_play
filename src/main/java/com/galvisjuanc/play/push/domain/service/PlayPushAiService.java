@@ -1,4 +1,4 @@
-package com.galvisjuanc.play.push.service;
+package com.galvisjuanc.play.push.domain.service;
 
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.V;
