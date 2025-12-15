@@ -16,7 +16,7 @@ public class HelloController {
         this.playPushAiService = playPushAiService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/hello")
     public String hello() {
         return this.playPushAiService.generateGreeting(platform);
     }
