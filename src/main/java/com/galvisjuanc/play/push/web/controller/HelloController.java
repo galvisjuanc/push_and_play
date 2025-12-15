@@ -1,4 +1,4 @@
-package com.galvisjuanc.play.push.controller;
+package com.galvisjuanc.play.push.web.controller;
 
 import com.galvisjuanc.play.push.domain.service.PlayPushAiService;
 import org.springframework.beans.factory.annotation.Value;
