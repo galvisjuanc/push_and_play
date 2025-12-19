@@ -1,8 +1,6 @@
 package com.galvisjuanc.play.push.persistence.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,13 +9,25 @@ import java.time.LocalDate;
 @Table(name = "play_push_movies")
 public class MovieEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 150, unique = true)
     private String title;
+
+    @Column(nullable = false, precision = 3)
     private Integer duration;
+
+    @Column(nullable = false, length = 40)
     private String genre;
+
+    @Column(name = "release_date")
     private LocalDate releaseDate;
+
+    @Column(precision = 3, scale = 2)
     private BigDecimal clasificacion;
+
+    @Column(nullable = false, length = 1)
     private String state;
 
     public Long getId() {
