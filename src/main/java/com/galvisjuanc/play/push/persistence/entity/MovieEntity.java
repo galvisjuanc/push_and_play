@@ -1,15 +1,32 @@
 package com.galvisjuanc.play.push.persistence.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "play_push_movies")
 public class MovieEntity {
+    @Id
+    private Long id;
+
     private String title;
     private Integer duration;
     private String genre;
     private LocalDate releaseDate;
     private BigDecimal clasificacion;
     private String state;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
