@@ -1,0 +1,21 @@
+package com.galvisjuanc.play.push.domain.service;
+
+import com.galvisjuanc.play.push.domain.dto.MovieDto;
+import com.galvisjuanc.play.push.domain.repository.MovieRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class MovieService {
+
+    private final MovieRepository movieRepository;
+
+    public MovieService(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
+    }
+
+    public List<MovieDto> getAll() {
+        return this.movieRepository.getAll();
+    }
+}
