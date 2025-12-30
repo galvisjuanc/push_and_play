@@ -9,5 +9,9 @@ import org.mapstruct.Mapping;
 public interface MovieMapper {
 
     @Mapping(source = "title", target = "title")
+    @Mapping(source = "duration", target = "duration")
+    @Mapping(source = "genre", target = "genre")
+    @Mapping(source = "releaseDate", target = "releaseDate")
+    @Mapping(source = "clasificacion", target = "rating")
     MovieDto toDto(MovieEntity movieEntity);
 }
