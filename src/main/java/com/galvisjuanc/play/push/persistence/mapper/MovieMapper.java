@@ -5,6 +5,8 @@ import com.galvisjuanc.play.push.persistence.entity.MovieEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface MovieMapper {
 
@@ -14,4 +16,5 @@ public interface MovieMapper {
     @Mapping(source = "releaseDate", target = "releaseDate")
     @Mapping(source = "clasificacion", target = "rating")
     MovieDto toDto(MovieEntity movieEntity);
+    List<MovieDto> toDto(Iterable<MovieEntity> movieEntities);
 }
