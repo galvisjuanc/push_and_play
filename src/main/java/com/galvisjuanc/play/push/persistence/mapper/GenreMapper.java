@@ -1,9 +1,11 @@
 package com.galvisjuanc.play.push.persistence.mapper;
 
 import com.galvisjuanc.play.push.domain.Genre;
+import org.mapstruct.Named;
 
 public class GenreMapper {
 
+    @Named("stringToGenre")
     public static Genre stringToGenre(String genre){
         if (genre == null) return null;
 
