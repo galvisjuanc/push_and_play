@@ -19,4 +19,18 @@ public class GenreMapper {
             default -> null;
         };
     }
+
+    @Named("genreToString")
+    public static String genreToString(Genre genre){
+        if (genre == null) return null;
+
+        return switch (genre) {
+            case ACTION -> "ACCION";
+            case COMEDY -> "COMEDIA";
+            case DRAMA -> "DRAMA";
+            case ANIMATED -> "ANIMADA";
+            case HORROR -> "HORROR";
+            case SCI_FI -> "CIENCIA_FICCION";
+        };
+    }
 }
