@@ -3,6 +3,7 @@ package com.galvisjuanc.play.push.web.controller;
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
 import com.galvisjuanc.play.push.domain.service.MovieService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,5 +20,10 @@ public class MovieController {
     @GetMapping("/movies")
     public List<MovieDto> getAll() {
         return this.movieService.getAll();
+    }
+
+    @GetMapping("/movies/{id}")
+    public MovieDto getById(@PathVariable long id) {
+        return null;
     }
 }
