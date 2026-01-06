@@ -2,6 +2,7 @@ package com.galvisjuanc.play.push.web.controller;
 
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
 import com.galvisjuanc.play.push.domain.service.MovieService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,13 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
-    public MovieDto getById(@PathVariable long id) {
-        return this.movieService.getById(id);
+    public ResponseEntity<MovieDto> getById(@PathVariable long id) {
+        MovieDto movieDto = this.movieService.getById(id);
+
+        if (movieDto == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(movieDto);
     }
 }
