@@ -3,7 +3,6 @@ package com.galvisjuanc.play.push.persistence;
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
 import com.galvisjuanc.play.push.domain.repository.MovieRepository;
 import com.galvisjuanc.play.push.persistence.crud.CrudMovieEntity;
-import com.galvisjuanc.play.push.persistence.entity.MovieEntity;
 import com.galvisjuanc.play.push.persistence.mapper.MovieMapper;
 import org.springframework.stereotype.Repository;
 
