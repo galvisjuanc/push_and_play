@@ -35,6 +35,6 @@ public class MovieController {
 
     @PostMapping
     public ResponseEntity<MovieDto> create(@RequestBody MovieDto movieDto) {
-        return null;
+        return ResponseEntity.ok(this.movieService.create(movieDto));
     }
 }

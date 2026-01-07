@@ -3,6 +3,7 @@ package com.galvisjuanc.play.push.persistence;
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
 import com.galvisjuanc.play.push.domain.repository.MovieRepository;
 import com.galvisjuanc.play.push.persistence.crud.CrudMovieEntity;
+import com.galvisjuanc.play.push.persistence.entity.MovieEntity;
 import com.galvisjuanc.play.push.persistence.mapper.MovieMapper;
 import org.springframework.stereotype.Repository;
 
@@ -28,5 +29,13 @@ public class MovieEntityRepository implements MovieRepository {
     @Override
     public MovieDto getById(long id) {
         return this.crudMovieEntity.findById(id).map(movieMapper::toDto).orElse(null);
+    }
+
+    @Override
+    public MovieDto save(MovieDto movieDto) {
+        MovieEntity  movieEntity = this.movieMapper.toEntity(movieDto);
+        movieEntity.setState("D");
+
+        return this.movieMapper.toDto(this.crudMovieEntity.save(movieEntity));
     }
 }
