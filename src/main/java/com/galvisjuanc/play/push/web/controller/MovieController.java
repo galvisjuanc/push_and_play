@@ -3,10 +3,7 @@ package com.galvisjuanc.play.push.web.controller;
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
 import com.galvisjuanc.play.push.domain.service.MovieService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +31,10 @@ public class MovieController {
         }
 
         return ResponseEntity.ok(movieDto);
+    }
+
+    @PostMapping
+    public ResponseEntity<MovieDto> create(@RequestBody MovieDto movieDto) {
+        return null;
     }
 }
