@@ -2,6 +2,7 @@ package com.galvisjuanc.play.push.persistence.mapper;
 
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
 import com.galvisjuanc.play.push.persistence.entity.MovieEntity;
+import org.mapstruct.InheritConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -19,6 +20,10 @@ public interface MovieMapper {
     @Mapping(source = "clasificacion", target = "rating")
     @Mapping(source = "state", target = "state", qualifiedByName = "stringToBoolean")
     MovieDto toDto(MovieEntity movieEntity);
+
+    @InheritConfiguration
+    @Mapping(source = "genre", target = "genre", qualifiedByName = "genreToString")
+    MovieEntity toEntity(MovieDto movieDto);
 
     List<MovieDto> toDto(Iterable<MovieEntity> movieEntities);
 }
