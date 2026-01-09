@@ -1,6 +1,7 @@
 package com.galvisjuanc.play.push.web.controller;
 
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
+import com.galvisjuanc.play.push.domain.dto.UpdateMovieDto;
 import com.galvisjuanc.play.push.domain.service.MovieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,5 +38,10 @@ public class MovieController {
     @PostMapping
     public ResponseEntity<MovieDto> create(@RequestBody MovieDto movieDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.movieService.create(movieDto));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<MovieDto> update(@RequestBody UpdateMovieDto updateMovieDto) {
+        return null;
     }
 }
