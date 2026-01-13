@@ -8,6 +8,7 @@ import com.galvisjuanc.play.push.persistence.entity.MovieEntity;
 import com.galvisjuanc.play.push.persistence.mapper.MovieMapper;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -49,6 +50,7 @@ public class MovieEntityRepository implements MovieRepository {
 
         movieEntity.setTitle(updateMovieDto.title());
         movieEntity.setReleaseDate(updateMovieDto.releaseDate());
+        movieEntity.setClasificacion(BigDecimal.valueOf(updateMovieDto.rating()));
         return this.movieMapper.toDto(this.crudMovieEntity.save(movieEntity));
     }
 }
