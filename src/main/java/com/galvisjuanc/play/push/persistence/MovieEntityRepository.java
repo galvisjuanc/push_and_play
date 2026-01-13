@@ -41,7 +41,14 @@ public class MovieEntityRepository implements MovieRepository {
     }
 
     @Override
-    public MovieDto update(UpdateMovieDto updateMovieDto) {
-        return null;
+    public MovieDto update(long id, UpdateMovieDto updateMovieDto) {
+        MovieEntity movieEntity = this.crudMovieEntity.findById(id).orElse(null);
+
+        if (movieEntity == null)
+            return null;
+
+        movieEntity.setTitle(updateMovieDto.title());
+        movieEntity.setReleaseDate(updateMovieDto.releaseDate());
+        return this.movieMapper.toDto(this.crudMovieEntity.save(movieEntity));
     }
 }
