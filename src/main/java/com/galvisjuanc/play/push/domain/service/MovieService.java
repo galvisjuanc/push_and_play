@@ -1,6 +1,7 @@
 package com.galvisjuanc.play.push.domain.service;
 
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
+import com.galvisjuanc.play.push.domain.dto.UpdateMovieDto;
 import com.galvisjuanc.play.push.domain.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,9 @@ public class MovieService {
 
     public MovieDto create(MovieDto movieDto) {
         return this.movieRepository.save(movieDto);
+    }
+
+    public MovieDto update(long id, UpdateMovieDto updateMovieDto) {
+        return this.movieRepository.update(id, updateMovieDto);
     }
 }
