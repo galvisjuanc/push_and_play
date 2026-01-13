@@ -1,10 +1,12 @@
 package com.galvisjuanc.play.push.persistence.mapper;
 
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
+import com.galvisjuanc.play.push.domain.dto.UpdateMovieDto;
 import com.galvisjuanc.play.push.persistence.entity.MovieEntity;
 import org.mapstruct.InheritConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
@@ -24,6 +26,11 @@ public interface MovieMapper {
     @InheritConfiguration
     @Mapping(source = "genre", target = "genre", qualifiedByName = "genreToString")
     MovieEntity toEntity(MovieDto movieDto);
+
+    @Mapping(target = "title", source = "title")
+    @Mapping(target = "releaseDate", source = "releaseDate")
+    @Mapping(target = "clasificacion", source = "rating")
+    void updateEntityFromDto(UpdateMovieDto updateMovieDto, @MappingTarget MovieEntity movieEntity);
 
     List<MovieDto> toDto(Iterable<MovieEntity> movieEntities);
 }
