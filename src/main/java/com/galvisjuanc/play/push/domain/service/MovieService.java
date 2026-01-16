@@ -3,6 +3,7 @@ package com.galvisjuanc.play.push.domain.service;
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
 import com.galvisjuanc.play.push.domain.dto.UpdateMovieDto;
 import com.galvisjuanc.play.push.domain.repository.MovieRepository;
+import dev.langchain4j.agent.tool.Tool;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
+    @Tool("Busca todas las peliculas que existan dentro de la plataforma")
     public List<MovieDto> getAll() {
         return this.movieRepository.getAll();
     }
