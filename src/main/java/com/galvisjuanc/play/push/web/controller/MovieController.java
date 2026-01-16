@@ -1,8 +1,11 @@
 package com.galvisjuanc.play.push.web.controller;
 
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
+import com.galvisjuanc.play.push.domain.dto.SuggestRequestDto;
 import com.galvisjuanc.play.push.domain.dto.UpdateMovieDto;
 import com.galvisjuanc.play.push.domain.service.MovieService;
+import com.galvisjuanc.play.push.domain.service.PlayPushAiService;
+import dev.langchain4j.service.spring.AiService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +17,11 @@ import java.util.List;
 public class MovieController {
 
     private final MovieService movieService;
+    private final PlayPushAiService aiService;
 
-    public MovieController(MovieService movieService) {
+    public MovieController(MovieService movieService, PlayPushAiService aiService) {
         this.movieService = movieService;
+        this.aiService = aiService;
     }
 
     @GetMapping
@@ -38,6 +43,11 @@ public class MovieController {
     @PostMapping
     public ResponseEntity<MovieDto> create(@RequestBody MovieDto movieDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.movieService.create(movieDto));
+    }
+
+    @PostMapping("/suggest")
+    public ResponseEntity<String> generateMoviesSuggestion(@RequestBody SuggestRequestDto suggestRequestDto) {
+        return ResponseEntity.ok(this.aiService.generateMoviesSuggestion(suggestRequestDto.userPreferences()));
     }
 
     @PutMapping("/{id}")
