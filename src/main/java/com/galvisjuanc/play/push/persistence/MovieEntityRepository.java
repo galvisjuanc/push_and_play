@@ -2,6 +2,7 @@ package com.galvisjuanc.play.push.persistence;
 
 import com.galvisjuanc.play.push.domain.dto.MovieDto;
 import com.galvisjuanc.play.push.domain.dto.UpdateMovieDto;
+import com.galvisjuanc.play.push.domain.exception.MovieAlreadyExistsException;
 import com.galvisjuanc.play.push.domain.repository.MovieRepository;
 import com.galvisjuanc.play.push.persistence.crud.CrudMovieEntity;
 import com.galvisjuanc.play.push.persistence.entity.MovieEntity;
@@ -35,6 +36,10 @@ public class MovieEntityRepository implements MovieRepository {
 
     @Override
     public MovieDto save(MovieDto movieDto) {
+
+        if (this.crudMovieEntity.findFirstByTitle(movieDto.title()) != null) {
+            throw new MovieAlreadyExistsException(movieDto.title());
+        }
         MovieEntity  movieEntity = this.movieMapper.toEntity(movieDto);
         movieEntity.setState("D");
 
