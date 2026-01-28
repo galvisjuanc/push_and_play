@@ -1,0 +1,4 @@
+package com.galvisjuanc.play.push.web.exception;
+
+public record Error(String type, String message) {
+}
