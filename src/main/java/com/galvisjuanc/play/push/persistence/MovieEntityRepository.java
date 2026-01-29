@@ -53,9 +53,12 @@ public class MovieEntityRepository implements MovieRepository {
     public MovieDto update(long id, UpdateMovieDto updateMovieDto) {
         MovieEntity movieEntity = this.crudMovieEntity.findById(id).orElseThrow(MovieNotFoundException::new);
 
-        if (movieEntity == null)
-            return null;
-
+        if (!movieEntity.getTitle().equals(updateMovieDto.title())) {
+            MovieEntity existingMovie = this.crudMovieEntity.findFirstByTitle(updateMovieDto.title());
+            if (existingMovie != null) {
+                throw new MovieAlreadyExistsException(updateMovieDto.title());
+            }
+        }
         this.movieMapper.updateEntityFromDto(updateMovieDto, movieEntity);
         return this.movieMapper.toDto(this.crudMovieEntity.save(movieEntity));
     }
