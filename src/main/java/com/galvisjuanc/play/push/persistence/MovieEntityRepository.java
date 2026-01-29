@@ -51,7 +51,7 @@ public class MovieEntityRepository implements MovieRepository {
 
     @Override
     public MovieDto update(long id, UpdateMovieDto updateMovieDto) {
-        MovieEntity movieEntity = this.crudMovieEntity.findById(id).orElse(null);
+        MovieEntity movieEntity = this.crudMovieEntity.findById(id).orElseThrow(MovieNotFoundException::new);
 
         if (movieEntity == null)
             return null;
