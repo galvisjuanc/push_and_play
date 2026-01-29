@@ -65,6 +65,8 @@ public class MovieEntityRepository implements MovieRepository {
 
     @Override
     public void deleteById(long id) {
-        this.crudMovieEntity.findById(id).ifPresent(crudMovieEntity::delete);
+        MovieEntity movieEntity = this.crudMovieEntity.findById(id).orElseThrow(MovieNotFoundException::new);
+
+        this.crudMovieEntity.delete(movieEntity);
     }
 }
