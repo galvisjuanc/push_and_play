@@ -30,6 +30,10 @@ public class RestExceptionHandler {
     public ResponseEntity<List<Error>> handleException(MethodArgumentNotValidException ex) {
         List<Error> errors = new ArrayList<>();
 
+        ex.getBindingResult().getFieldErrors().forEach(error -> {
+            errors.add(new Error(error.getField(), error.getDefaultMessage()));
+        });
+
         return ResponseEntity.badRequest().body(errors);
     }
 }
