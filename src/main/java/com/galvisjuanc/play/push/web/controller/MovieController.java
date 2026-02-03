@@ -42,7 +42,7 @@ public class MovieController {
     }
 
     @PostMapping
-    public ResponseEntity<MovieDto> create(@RequestBody MovieDto movieDto) {
+    public ResponseEntity<MovieDto> create(@RequestBody @Valid MovieDto movieDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.movieService.create(movieDto));
     }
 
