@@ -5,7 +5,7 @@ import com.galvisjuanc.play.push.domain.dto.SuggestRequestDto;
 import com.galvisjuanc.play.push.domain.dto.UpdateMovieDto;
 import com.galvisjuanc.play.push.domain.service.MovieService;
 import com.galvisjuanc.play.push.domain.service.PlayPushAiService;
-import dev.langchain4j.service.spring.AiService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/movies")
+@Tag(name = "Movies", description = "Operations about movies")
 public class MovieController {
 
     private final MovieService movieService;
