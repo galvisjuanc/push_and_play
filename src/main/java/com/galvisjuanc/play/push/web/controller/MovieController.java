@@ -6,6 +6,8 @@ import com.galvisjuanc.play.push.domain.dto.UpdateMovieDto;
 import com.galvisjuanc.play.push.domain.service.MovieService;
 import com.galvisjuanc.play.push.domain.service.PlayPushAiService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -37,11 +39,13 @@ public class MovieController {
             summary = "Get a movie by its id",
             description = "Returns the movie related with the id",
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Movie found")
+                    @ApiResponse(responseCode = "200", description = "Movie found"),
+                    @ApiResponse(responseCode = "404", description = "Movie not found", content = @Content)
             }
     )
     @GetMapping("/{id}")
-    public ResponseEntity<MovieDto> getById(@PathVariable long id) {
+    public ResponseEntity<MovieDto> getById(@Parameter(description = "Id of the movie to look for", example = "9")
+                                                @PathVariable long id) {
         MovieDto movieDto = this.movieService.getById(id);
 
         if (movieDto == null) {
