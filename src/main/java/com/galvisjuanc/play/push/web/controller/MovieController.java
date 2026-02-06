@@ -5,6 +5,8 @@ import com.galvisjuanc.play.push.domain.dto.SuggestRequestDto;
 import com.galvisjuanc.play.push.domain.dto.UpdateMovieDto;
 import com.galvisjuanc.play.push.domain.service.MovieService;
 import com.galvisjuanc.play.push.domain.service.PlayPushAiService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -31,6 +33,13 @@ public class MovieController {
         return ResponseEntity.ok(this.movieService.getAll());
     }
 
+    @Operation(
+            summary = "Get a movie by its id",
+            description = "Returns the movie related with the id",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Movie found")
+            }
+    )
     @GetMapping("/{id}")
     public ResponseEntity<MovieDto> getById(@PathVariable long id) {
         MovieDto movieDto = this.movieService.getById(id);
