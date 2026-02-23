@@ -48,9 +48,8 @@ public class MovieController {
                                                 @PathVariable long id) {
         MovieDto movieDto = this.movieService.getById(id);
 
-        if (movieDto == null) {
+        if (movieDto == null)
             return ResponseEntity.notFound().build();
-        }
 
         return ResponseEntity.ok(movieDto);
     }
