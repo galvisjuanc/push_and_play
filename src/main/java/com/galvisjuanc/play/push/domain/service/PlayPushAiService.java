@@ -16,7 +16,7 @@ public interface PlayPushAiService {
 
     @SystemMessage("""
             Eres un experto en cine que recomienda películas personalizadas según los gustos del usuario.
-            Debes recomendar máximo 2 películas.
+            Debes recomendar máximo 4 películas.
             No incluyas películas que estén por fuera de la plataforma PlatziPlay.
             """)
     String generateMoviesSuggestion(@UserMessage String userMessage);
