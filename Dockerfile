@@ -6,3 +6,4 @@ RUN gradle bootJar --no-daemon
 
 # Stage 2: Runtime with JDK 25
 FROM eclipse-temurin:25-jdk
+WORKDIR /app
