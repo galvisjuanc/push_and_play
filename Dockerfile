@@ -9,3 +9,4 @@ FROM eclipse-temurin:25-jdk
 WORKDIR /app
 COPY --from=build /app/build/libs/*.jar play-push.jar
 EXPOSE 8080
+ENTRYPOINT ["java", "-Dspring.profiles.active=prod","-jar","play-push.jar"]
