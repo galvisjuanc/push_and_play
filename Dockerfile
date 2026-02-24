@@ -8,3 +8,4 @@ RUN gradle bootJar --no-daemon
 FROM eclipse-temurin:25-jdk
 WORKDIR /app
 COPY --from=build /app/build/libs/*.jar play-push.jar
+EXPOSE 8080
